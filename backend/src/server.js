@@ -3,14 +3,12 @@
 import 'dotenv/config';
 import { readFileSync } from 'node:fs';
 import https from 'https';
-import { logger, contentTypeMiddleware } from './middleware.js';
+import { queryLogger, contentTypeMiddleware } from './networking/middleware.js';
 import { 
-  trackerJsFileHandler, 
   notFoundHanlder, 
-  collectHandler, 
-  dashboardHandler, 
-  cssFileHandler 
-} from './handlers.js';
+  searchHandler,
+  widgetHandler,
+} from './networking/handlers.js';
 
 /*
 To generate a cert and key for this example:
@@ -21,23 +19,17 @@ TODO: remove once deployed to hostinger
 */
 
 const options = {
-  key: readFileSync('server/localhost-privkey.pem'),
-  cert: readFileSync('server/localhost-cert.pem'),
+  key: readFileSync('localhost-privkey.pem'),
+  cert: readFileSync('localhost-cert.pem'),
 };
 
-// ---- HTTPS server for analytics ingest ----
 const httpsServer = https.createServer(options, (req, res) => {
-  logger('info', req, res, () => {
+  queryLogger('info', req, res, () => {
     contentTypeMiddleware(req, res, async () => {
       if (req.url === '/search' && req.method === 'GET') {
-      } else if (req.url === '/collect' && req.method === 'POST') {
-        await collectHandler(req, res);
-      }  else if (req.url === '/dashboard' && req.method === 'GET') {
-        await dashboardHandler(req, res);
-      } else if (req.url === '/style.css' && req.method === 'GET') {
-        await cssFileHandler(req, res);
-        // TODO: add another handler for /analyitcs explaining how clients 
-        // can add the script tag to their page and get analytics
+        await searchHandler(req, res);
+      } else if (req.url === '/widget' && req.method === 'GET') {
+        await widgetHandler(req, res);
       } else {
         notFoundHanlder(req, res);
       }
@@ -46,4 +38,4 @@ const httpsServer = https.createServer(options, (req, res) => {
 });
 
 
-httpsServer.listen(8444, () => console.log('HTTPS server running on 8444'));
+httpsServer.listen(1234, () => console.log('HTTPS server running on 1234'));
