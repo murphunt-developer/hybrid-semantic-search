@@ -10,9 +10,11 @@ import { writeLog } from '../databases/firestore.js';
  * @param {*} next 
  */
 export const queryLogger = async (level, req, _, next) => {
+  const timestamp = new Date().toUTCString();
   const format = (obj) => util.inspect(obj, { depth: null, colors: false, compact: false });
   await writeLog({
     level,
+    timestamp,
     message: `
     ---------------------------------------------------------
     Method: ${req.method}

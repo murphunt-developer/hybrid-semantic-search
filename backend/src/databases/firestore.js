@@ -10,13 +10,13 @@ DBs include:
  
  */
 
-
-
 /**
  * Writes log to server logging database
  * @param {*} param0 
  */
-export async function writeLog({ level = 'info', message, metadata = {} }) {};
+export async function writeLog({ level = 'INFO', timestamp, message, metadata = {} }) {
+  // TODO: add PUT onto firestore query log database
+};
 
 
 /**
