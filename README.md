@@ -10,13 +10,13 @@ Nexus is a high-performance, full-stack search widget that demonstrates expertis
 |---|---|---|
 | P99 Latency Optimization | Implemented a Semantic Caching Layer (Redis) using vector similarity to serve near-identical queries from the cache, reducing P99 latency by >90% compared to re-running full inference. | Demonstrates ability to optimize AI Inference Serving—a critical challenge at Google scale.|
 | High-Quality Retrieval | Engineered a Hybrid Search Pipeline leveraging the Vector Database (pgvector) to run parallel Keyword Search and Semantic Search, fused using the RRF algorithm. | Shows understanding that real-world accuracy requires combining fast traditional methods with modern AI. |
-| Full-Stack Performance | Built a responsive TypeScript/React Widget featuring optimistic UI updates and a speculative debouncing strategy, minimizing API calls while preserving a sub-100ms user experience. | Leverages your frontend/widget experience and demonstrates end-to-end performance ownership. |
+| Full-Stack Performance | Built a responsive JavaScript/React Widget featuring optimistic UI updates and a speculative debouncing strategy, minimizing API calls while preserving a sub-100ms user experience. | Leverages your frontend/widget experience and demonstrates end-to-end performance ownership. |
 | Scalable Infrastructure | Containerized the service using Docker and deployed to Google Cloud Run, configured for automatic scaling to handle 10,000+ RPS load tested using a custom Python script. | Proves expertise in building and deploying robust, cost-efficient, cloud-native services. |
 
 ## Technology Stack
 
-- Frontend: React, TypeScript, Tailwind CSS
-- Backend/Middleware: Node.js / TypeScript, Express
+- Frontend: React, JavaScript, Tailwind CSS
+- Backend/Middleware: Node.js / JavaScript, Express
 - AI/Embeddings: Google Vertex AI (text-embedding-gecko model)
 - Database: PostgreSQL with pgvector extension
 - Caching: Redis

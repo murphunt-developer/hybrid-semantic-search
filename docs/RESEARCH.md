@@ -365,3 +365,7 @@ npx create-instantsearch-app@latest instantsearch-app \
     2. Index creation: whenever a document is created, updated, or deleted, the function sends the data to the external search service to keep its BM25 index up-to-date
     3. Search Query: your application sends the full-text search query directly to the external search service PI. The service returns a list of highly relevant document IDs, ranked by the BM25 score
     4. Data Retrieval: the application uses those document IDs to fetch the full documents from firestore
+
+
+### Firebase Functions:
+- https://www.youtube.com/watch?v=udHm7I_OvJs&list=PL4cUxeGkcC9i_aLkr62adUTJi53y7OjOf

@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # Service 1: Your Database
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  # Service 2: Your Node App
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_URL=redis://redis:6379 # Notice it talks to the service name 'redis', not localhost
+    depends_on:
+      - redis
